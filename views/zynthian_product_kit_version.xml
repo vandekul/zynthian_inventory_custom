@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+		<template id="zynthian_product_kit_version" inherit_id="product.product_template_form_view" name="Zynthian Product Kit Version">
+
+			<!--Only one address is provided, this is Shipping Address -->
+			<xpath expr="//field[@name='categ_id']" position="after">
+				<field name="product_kit_version_id" widget="many2many_tags" string="Kit Version"/>
+			</xpath>
+		</template>
+	</data>
+</openerp>
+
+	
