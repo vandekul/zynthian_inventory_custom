@@ -1,14 +1,31 @@
 <?xml version="1.0"?>
 <openerp>
 	<data>
-		<template id="zynthian_product_kit_version" inherit_id="product.product_template_form_view" name="Zynthian Product Kit Version">
+		<record id="zynthian_product_kit_version" model="ir.ui.view">
+			<field name="name">Zynthian Product Kit Version</field>
+			<field name="model">product.template</field>
+			<field name="priority">16</field>
+			<field name="inherit_id" ref="product.product_template_form_view"/>
+			<field name="arch" type="xml">
+				<xpath expr="//group[@name='inventory']" position="after">
+					<group name="inventory">
+						<field name="product_kit_version_ids" widget="many2many_tags" string="Kit Version"/>
+					</group>
+				</xpath>
+			</field>
+		</record>
 
-			<!--Only one address is provided, this is Shipping Address -->
-			<xpath expr="//field[@name='categ_id']" position="after">
-				<field name="product_kit_version_id" widget="many2many_tags" string="Kit Version"/>
-			</xpath>
-		</template>
-	</data>
+
+		<record id="zynthian_product_kit_version_tree" model="ir.ui.view">
+			<field name="name">Zynthian Product Kit Version Tree</field>
+			<field name="model">product.template</field>
+			<field name="priority" eval="16" />
+			<field name="inherit_id" ref="product.product_template_tree_view"/>
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='uom_id']" position="after">
+					<field name="product_kit_version_ids"/>
+				</xpath>
+			</field>
+		</record>
+    </data>
 </openerp>
-
-	
